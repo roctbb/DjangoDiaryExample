@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <a href="/logout">Выход</a>
+
+    {% for post in posts %}
+        <p>
+            {{ post.text }}<br>
+            <small><i>{{ post.date }}</i></small>
+        </p>
+
+    {% endfor %}
+
+    <p><b>Написать...</b></p>
+    <form method="post">
+        {% csrf_token %}
+        <textarea cols="30" rows="6" name="text"></textarea><br>
+        <input type="submit" value="добавить запись"/>
+    </form>
+
+
+{% endblock %}

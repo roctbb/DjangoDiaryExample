@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h5>Вход в дневник</h5>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p><label>Логин:</label> <input type="text" name="login"></p>
+        <p><label>Пароль:</label> <input type="password" name="password"></p>
+
+        <input type="submit" value="Вход"/>
+        <br>
+        <a href="/register">Регистрация</a>
+
+    </form>
+{% endblock %}
