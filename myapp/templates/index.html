@@ -6,7 +6,7 @@
     {% for post in posts %}
         <p>
             {{ post.text }}<br>
-            <small><i>{{ post.date }}</i></small>
+            <small><i>{{ post.date }}</i> <a href="/delete/{{ post.id }}" onclick="return confirm('Вы уверены?');">удалить</a></small>
         </p>
 
     {% endfor %}

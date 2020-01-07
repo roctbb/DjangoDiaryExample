@@ -1,7 +1,6 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from myapp.models import Post
@@ -56,4 +55,10 @@ def logout_user(request):
     return redirect('/login')
 
 def delete_post(request, post_id):
-    pass
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    post = get_object_or_404(Post, pk=post_id)
+    if post.user == request.user:
+        post.delete()
+
+    return redirect('/')
